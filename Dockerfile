@@ -1,7 +1,9 @@
 FROM golang:1.23-alpine AS builder
 
 # Installation des dépendances système (par exemple, git, sqlite, etc.)
-RUN apk add --no-cache git sqlite gcc musl-dev
+# Installation des dépendances système (par exemple, git, sqlite, yt-dlp, etc.)
+RUN apk add --no-cache git sqlite gcc musl-dev python3 py3-pip && \
+    pip install --no-cache-dir yt-dlp
 
 # Définir le répertoire de travail
 WORKDIR /app
