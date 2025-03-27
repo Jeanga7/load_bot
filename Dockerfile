@@ -18,7 +18,7 @@ RUN CGO_ENABLED=1 GOOS=linux go build -o telegram-bot .
 
 # Image finale, légère
 FROM alpine:latest
-RUN apk --no-cache add ca-certificates sqlite
+RUN apk --no-cache add ca-certificates sqlite yt-dlp
 WORKDIR /root/
 COPY --from=builder /app/telegram-bot .
 COPY --from=builder /app/.env .
